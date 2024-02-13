@@ -1,0 +1,50 @@
+{
+  "name": "mgcmodel_prd",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1",
+    "@sap/hana-client": "^2.18.24",
+    "@sap/xsenv": "^3",
+    "@sap/xssec": "^3",
+    "cds-swagger-ui-express": "^0.5.0",
+    "debug": "^4.3",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/hdi-deploy": "4.8.2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      },
+      "db": {
+        "kind": "sql"
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "features": {
+      "fiori_preview": true
+    }
+  }
+}

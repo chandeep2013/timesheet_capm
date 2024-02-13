@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="WBS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="WBS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="MGC_PRD_DB_SECTIONS">
+    <resourceUri>MGC_PRD_DB_SECTIONS</resourceUri>
+  </DataSource>
+  <DataSource id="MGC_PRD_DB_PHASES">
+    <resourceUri>MGC_PRD_DB_PHASES</resourceUri>
+  </DataSource>
+  <DataSource id="MGC_PRD_DB_JOBS">
+    <resourceUri>MGC_PRD_DB_JOBS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="MGC_PRD_DB_JOBS" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="ID_1"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="PROJECTMANAGER_1"/>
+      <viewAttribute id="PROJECTMANAGEREMAIL_1"/>
+      <viewAttribute id="JOBS"/>
+      <viewAttribute id="ID_2"/>
+      <viewAttribute id="NAME_2"/>
+      <viewAttribute id="PROJECTMANAGER_2"/>
+      <viewAttribute id="PROJECTMANAGEREMAIL_2"/>
+      <viewAttribute id="SECTION"/>
+      <viewAttribute id="STATUS_1"/>
+      <viewAttribute id="STATUS_2"/>
+      <viewAttribute hidden="true" id="JOIN$ID$SECTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MGC_PRD_DB_SECTIONS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_1" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGER_1" source="PROJECTMANAGER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGEREMAIL_1" source="PROJECTMANAGEREMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOBS" source="JOBS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS_1" source="STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$SECTION" source="ID"/>
+    </input>
+    <input node="MGC_PRD_DB_PHASES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_2" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_2" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGER_2" source="PROJECTMANAGER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGEREMAIL_2" source="PROJECTMANAGEREMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECTION" source="SECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS_2" source="STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$SECTION" source="SECTION"/>
+    </input>
+    <joinAttribute name="JOIN$ID$SECTION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="MGC_PRD_DB_JOBS" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="ID_1"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="PROJECTMANAGER_1"/>
+      <viewAttribute id="PROJECTMANAGEREMAIL_1"/>
+      <viewAttribute id="JOBS"/>
+      <viewAttribute id="ID_2"/>
+      <viewAttribute id="NAME_2"/>
+      <viewAttribute id="PROJECTMANAGER_2"/>
+      <viewAttribute id="PROJECTMANAGEREMAIL_2"/>
+      <viewAttribute id="SECTION"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="PROJECTMANAGER"/>
+      <viewAttribute id="PROJECTMANAGEREMAIL"/>
+      <viewAttribute id="COMPANYID"/>
+      <viewAttribute id="COMPANYDESCRIPTION"/>
+      <viewAttribute id="PROFITCENTER"/>
+      <viewAttribute id="STATUS"/>
+      <viewAttribute id="STATUS_1"/>
+      <viewAttribute id="STATUS_2"/>
+      <viewAttribute hidden="true" id="JOIN$ID$JOBS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MGC_PRD_DB_JOBS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGER" source="PROJECTMANAGER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGEREMAIL" source="PROJECTMANAGEREMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYID" source="COMPANYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYDESCRIPTION" source="COMPANYDESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROFITCENTER" source="PROFITCENTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS" source="STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$JOBS" source="ID"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_1" source="ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGER_1" source="PROJECTMANAGER_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGEREMAIL_1" source="PROJECTMANAGEREMAIL_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOBS" source="JOBS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_2" source="ID_2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_2" source="NAME_2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGER_2" source="PROJECTMANAGER_2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTMANAGEREMAIL_2" source="PROJECTMANAGEREMAIL_2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECTION" source="SECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS_1" source="STATUS_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS_2" source="STATUS_2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$JOBS" source="JOBS"/>
+    </input>
+    <joinAttribute name="JOIN$ID$JOBS"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1_2">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ID"/>
+    </attribute>
+    <attribute id="NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="NAME"/>
+    </attribute>
+    <attribute id="PROJECTMANAGER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGER"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGER"/>
+    </attribute>
+    <attribute id="PROJECTMANAGEREMAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGEREMAIL"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGEREMAIL"/>
+    </attribute>
+    <attribute id="COMPANYID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANYID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="COMPANYID"/>
+    </attribute>
+    <attribute id="COMPANYDESCRIPTION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANYDESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="COMPANYDESCRIPTION"/>
+    </attribute>
+    <attribute id="ID_1" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_1"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ID_1"/>
+    </attribute>
+    <attribute id="NAME_1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_1"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="NAME_1"/>
+    </attribute>
+    <attribute id="PROJECTMANAGER_1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGER_1"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGER_1"/>
+    </attribute>
+    <attribute id="PROJECTMANAGEREMAIL_1" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGEREMAIL_1"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGEREMAIL_1"/>
+    </attribute>
+    <attribute id="JOBS" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="JOBS"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="JOBS"/>
+    </attribute>
+    <attribute id="ID_2" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_2"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ID_2"/>
+    </attribute>
+    <attribute id="NAME_2" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_2"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="NAME_2"/>
+    </attribute>
+    <attribute id="PROJECTMANAGER_2" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGER_2"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGER_2"/>
+    </attribute>
+    <attribute id="PROJECTMANAGEREMAIL_2" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTMANAGEREMAIL_2"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PROJECTMANAGEREMAIL_2"/>
+    </attribute>
+    <attribute id="SECTION" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SECTION"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="SECTION"/>
+    </attribute>
+  
+    <attribute id="PROFITCENTER" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROFITCENTER"/>
+  
+      <keyMapping columnObjectName="Join_1_2" columnName="PROFITCENTER"/>
+  
+    </attribute>
+  
+    <attribute id="STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATUS"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="STATUS"/>
+    </attribute>
+    <attribute id="STATUS_1" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATUS_1"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="STATUS_1"/>
+    </attribute>
+    <attribute id="STATUS_2" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATUS_2"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="STATUS_2"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="205"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="MGC_PRD_DB_JOBS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="225"/>
+    </shape>
+    <shape modelObjectName="MGC_PRD_DB_SECTIONS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="225"/>
+    </shape>
+    <shape modelObjectName="MGC_PRD_DB_PHASES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="225"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,9 @@
+[
+    {
+        "service": "mgc.srv.MgcDbService",
+        "entity": "Employees",
+        "KeyColumn": "ID",
+        "sequence": "MGC_SEQ_EMPLOYEE"      
+    }
+
+]

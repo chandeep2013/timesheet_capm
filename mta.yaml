@@ -1,0 +1,72 @@
+_schema-version: '3.1'
+ID: mgcmodel_prd
+description: A simple CAP project.
+version: 1.0.0
+modules:
+  - name: mgcmodel_prd-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: mgcmodel_prd-db
+      - name: uaa_mgcmodel_prd
+    provides:
+      - name: mgcmodel-prd-srv-url
+        properties:
+          mgcmodel-prd-srv-url: '${default-url}'
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+  - name: mgcmodel_prd-db-deployer
+    type: hdb
+    path: gen/db
+    requires:
+      - name: mgcmodel_prd-db
+    parameters:
+      buildpack: nodejs_buildpack
+  - name: mgcmodel-prd-approuter
+    type: approuter.nodejs
+    path: mgcmodel-prd-approuter
+    requires:
+      - name: mgcmodel_prd_html_repo_runtime
+      - name: uaa_mgcmodel_prd
+      - name: mgcmodel-prd-srv-url
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          name: mgcmodel-prd-srv-url
+          timeout: 600000
+          url: '~{mgcmodel-prd-srv-url}'
+        parameters:
+          disk-quota: 256M
+          memory: 256M
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+resources:
+  - name: mgcmodel_prd-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+      config:
+        schema: mgc_prd
+  - name: mgcmodel_prd_html_repo_runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+  - name: uaa_mgcmodel_prd
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: mgcmodel_prd-xsuaa-service
+      service-plan: application
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
